@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Wish</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100dvh;
+    background: radial-gradient(circle at top, #1a1a2e, #000);
+    color:white;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* Main Layout */
+.main{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100dvh;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+/* Moon */
+.moon{
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:60px;
+    height:60px;
+    background:#f5f3ce;
+    border-radius:50%;
+    box-shadow:0 0 30px #fff;
+    display:none;
+}
+
+@media(min-width:768px){
+    .moon{
+        width:100px;
+        height:100px;
+    }
+}
+
+/* Stars */
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:0;
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%{opacity:0;}
+    50%{opacity:1;}
+    100%{opacity:0;}
+}
+
+/* Hearts */
+.heart{
+    position:absolute;
+    font-size:20px;
+    animation: float 8s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes float{
+    0%{ transform: translateY(100vh); opacity:1;}
+    100%{ transform: translateY(-10vh); opacity:0;}
+}
+
+/* Lock Screen */
+#lockScreen{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    padding:20px;
+    text-align:center;
+}
+
+/* Inputs */
+input{
+    padding:10px;
+    border:none;
+    border-radius:20px;
+    margin-top:10px;
+    text-align:center;
+    width:200px;
+}
+
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    background:#ff4e8a;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#ff2e73;
+}
+
+/* Headings */
+h1{
+    font-size:clamp(24px,6vw,40px);
+}
+
+h2{
+    font-size:clamp(18px,5vw,28px);
+}
+
+/* Gallery - 4 per row desktop */
+.gallery{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:10px;
+    margin-top:20px;
+    width:100%;
+    max-width:900px;
+}
+
+.gallery img{
+    width:100%;
+    aspect-ratio:3/4;
+    border-radius:15px;
+    object-fit:cover;
+    transition:transform 0.4s ease;
+}
+
+.gallery img:hover{
+    transform:translateY(-8px);
+}
+
+/* Mobile - 2 per row */
+@media(max-width:600px){
+    .gallery{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Proposal */
+#proposal{
+    display:none;
+    margin-top:20px;
+    animation:zoom 0.8s forwards;
+}
+
+@keyframes zoom{
+    from{transform:scale(0);}
+    to{transform:scale(1);}
+}
+
+/* Fireworks */
+.firework{
+    position:absolute;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    pointer-events:none;
+}
+
+@keyframes explode{
+    to{
+        transform: translate(var(--x), var(--y));
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="lockScreen">
+    <h2>Enter Your Date Of Birth 🎂</h2>
+    <input type="password" id="password" placeholder="DDMMYYYY">
+    <button onclick="unlock()">Unlock ❤️</button>
+</div>
+
+<div class="moon" id="moon"></div>
+
+<div class="main" id="mainContent" style="display:none;">
+    <h1>Happy Birthday </h1><br>
+    <h1>Sivaranjini ❤️</h1>
+    <br><br>
+    <p>You are my moon in the darkest nights 🌙✨</p>
+
+    <div class="gallery">
+        <img src="image7.jpg">
+        <img src="image1.jpg">
+        <img src="image3.jpg">
+        <img src="image2.jpg">
+        <img src="image5.jpg">
+        <img src="image6.jpg">
+        <img src="image4.jpg">
+        <img src="image8.jpg">
+    </div>
+
+    <button onclick="propose()">Click for Surprise 💍</button>
+
+    <div id="proposal">
+        <h2> SIVARANJINI ❤️</h2><br>
+        <p id="message" style="text-transform: capitalize;"></p>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="Remo.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<script>
+
+const text = "Happy Birthday to my forever girl ❤️✨ You’re not just my best friend… you’re my comfort place, my biggest supporter, and the person who understands me without me saying a word. Thank you for standing by me in every mood, every mess, every moment. Life feels lighter with you in it. I pray this year gives you everything your heart secretly wishes for — success, happiness, peace, and love that matches your beautiful soul. No matter where life takes us, remember one thing — I’m always just one call away. Always. 💫 Love you endlessly, bestie 💕 💍🥰";
+
+let i = 0;
+let typingStarted = false;
+
+const correctPassword="14052004";
+
+/* Unlock */
+function unlock(){
+    let entered=document.getElementById("password").value;
+
+    if(entered===correctPassword){
+
+        document.getElementById("lockScreen").style.display="none";
+        document.getElementById("mainContent").style.display="flex";
+        document.getElementById("moon").style.display="block";
+
+        createStars();
+        launchFireworks()
+        document.getElementById("bgMusic").play().catch(()=>{});
+
+    }else{
+        alert("Wrong password 😜 Try again!");
+    }
+}
+
+/* Type Effect */
+function typeEffect(){
+    if(i < text.length){
+        document.getElementById("message").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 40);
+    }
+}
+
+
+/* Stars */
+function createStars(){
+    for(let i=0;i<80;i++){
+        let star=document.createElement("div");
+        star.className="star";
+        star.style.top=Math.random()*100+"vh";
+        star.style.left=Math.random()*100+"vw";
+        star.style.animationDuration=(1+Math.random()*3)+"s";
+        document.body.appendChild(star);
+    }
+}
+
+/* Floating Hearts */
+function createHearts(symbol){
+    for(let i=0;i<25;i++){
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML=symbol;
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.animationDuration=(5+Math.random()*5)+"s";
+        document.body.appendChild(heart);
+    }
+}
+
+createHearts("💖");
+createHearts("🎉");
+
+/* Fireworks */
+function createFirework(x,y){
+    for(let i=0;i<80;i++){
+        const particle=document.createElement("div");
+        particle.className="firework";
+        particle.style.background=`hsl(${Math.random()*360},100%,60%)`;
+        particle.style.left=x+"px";
+        particle.style.top=y+"px";
+
+        const angle=Math.random()*2*Math.PI;
+        const distance=Math.random()*120+50;
+
+        particle.style.setProperty("--x",Math.cos(angle)*distance+"px");
+        particle.style.setProperty("--y",Math.sin(angle)*distance+"px");
+
+        particle.style.animation="explode 1s ease-out forwards";
+
+        document.body.appendChild(particle);
+        setTimeout(()=>particle.remove(),1000);
+    }
+}
+
+function launchFireworks(){
+    for(let i=0;i<46;i++){
+        setTimeout(()=>{
+            const x=Math.random()*window.innerWidth;
+            const y=Math.random()*window.innerHeight/2;
+            createFirework(x,y);
+        },i*500);
+    }
+}
+
+/* Proposal */
+function propose(){
+    document.getElementById("proposal").style.display="block";
+    if(i===0){
+        typeEffect();
+        ;
+    }
+}
+
+
+</script>
+
+</body>
+</html>
