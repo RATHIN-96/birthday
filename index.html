@@ -4,13 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Birthday Wish</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+ integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+ 
+ <!-- font -->
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+    /* font-family:'Segoe UI',sans-serif; */
 }
 
 body{
@@ -139,7 +147,7 @@ h2{
     max-width:900px;
 }
 
-.gallery img{
+.card img {
     width:100%;
     aspect-ratio:3/4;
     border-radius:15px;
@@ -147,7 +155,7 @@ h2{
     transition:transform 0.4s ease;
 }
 
-.gallery img:hover{
+.card:hover{
     transform:translateY(-8px);
 }
 
@@ -156,6 +164,11 @@ h2{
     .gallery{
         grid-template-columns: repeat(2, 1fr);
     }
+    .card{
+        width: 160px;
+    
+    }
+    
 }
 
 /* Proposal */
@@ -186,6 +199,54 @@ h2{
     }
 }
 
+.card img{
+    filter: grayscale(100%);
+}
+
+.card img:hover{
+    filter: grayscale(0%);
+}
+
+.rainbow-text{
+    font-size:clamp(28px,7vw,50px);
+    font-weight:bold;
+    background: linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet,
+        red
+    );
+    background-size: 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbowMove 6s linear infinite;
+}
+
+@keyframes rainbowMove{
+    0%{ background-position:0%; }
+    100%{ background-position:400%; }
+}
+
+.card{
+    color: #fff;
+    text-transform: capitalize;
+    text-shadow: 1px 1px 1px black;
+    font-size: large;
+    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+}
+
+.card-body{
+
+  font-family: "Oleo Script", system-ui;
+  font-weight: 400;
+
+
+}
 </style>
 </head>
 
@@ -194,27 +255,106 @@ h2{
 <div id="lockScreen">
     <h2>Enter Your Date Of Birth 🎂</h2>
     <input type="password" id="password" placeholder="DDMMYYYY">
-    <button onclick="unlock()">Unlock ❤️</button>
+    <button onclick="unlock()">Unlock</button>
 </div>
 
 <div class="moon" id="moon"></div>
 
 <div class="main" id="mainContent" style="display:none;">
     <h1>Happy Birthday </h1><br>
-    <h1>Sivaranjini ❤️</h1>
+    <h1>SIVARANJINI<span class="rainbow-text">❤️</spans></h1>
     <br><br>
     <p>You are my moon in the darkest nights 🌙✨</p>
 
     <div class="gallery">
-        <img src="image7.jpg">
-        <img src="image1.jpg">
-        <img src="image3.jpg">
-        <img src="image2.jpg">
-        <img src="image5.jpg">
-        <img src="image6.jpg">
-        <img src="image4.jpg">
-        <img src="image8.jpg">
+
+        <div class="card" >
+        <img src="image1.jpg" class="card-img-top" alt="...">
+         <div class="card-body" >
+        <h5 class="card-title"></h5>
+        <p class="card-text">On your birthday, I pray that God blesses you with good health, peaceful days, endless smiles,
+             and success in everything you do. May every tear turn into joy and every dream turn into reality. You deserve the best in this world 🌷💫</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+         </div>
+        </div>
+        
+         <div class="card" style="width: ;">
+        <img src="image6.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text">Happy Birthday <span style="color: rgb(0, 251, 255);">Kunju</span> who means more to me than she knows.
+        You make ordinary days feel special. I’m grateful for every memory, every laugh, and every moment with you. You’re truly one of a kind 🌸</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+         </div>
+    
+        </div>
+        <div class="card" style="width: ;">
+        <img src="image4.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text">Happy Birthday to the one who understands my silence.
+        Thank you for being my safe place, my late-night listener, and my constant support. No matter where life takes us,
+        I promise I’ll always stand by you. You deserve peace, success, and a love that matches your heart 🤍</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+         </div>
+        
+        </div>
+        <div class="card" style="width: ;">
+        <img src="image3.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text" >Happy Birthday, my Dear <span style="color: rgb(0, 221, 255);">Kunju</span> ❤️
+            Stay happy, stay blessed, and stay mine forever as my best friend.</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+         </div>
+        </div>
+
+        <div class="card" style="width: ;">
+        <img src="image7.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text">Happy Birthday to the strongest girl I know 💪💖
+        No matter what happens, remember you’re never alone. I’ll always protect you, support you, and remind you how amazing you are. The world is lucky to have you.</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+         </div>
+        </div>
+
+        <div class="card" style="width: ;">
+        <img src="image5.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text">Happy Birthday to my <span style="color: rgb(0, 195, 255);"> Delulu</span> 🎂✨
+        You’re not just my best friend, you’re my daily dose of happiness. Life feels softer, brighter, and safer with you in it. 
+        I hope this year gives you everything you secretly pray for. Stay the same beautiful soul you are 💗</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+         </div>
+        </div>
+
+        <div class="card" style="width: ;">
+        <img src="image2.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text">Happy Birthday, Drama Queen 👑🎉
+        You’re officially older but still acting like a baby 😌
+        Thank you for tolerating me every day — that itself deserves an award! May your year be full of food, fun, and zero stress (and maybe a little less attitude 😂)</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+         </div>
+        </div>
+
+        <div class="card" style="width: ;">
+        <img src="image8.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text" >Happy Birthday to the girl who changed my life in the simplest way. From random talks to serious life discussions, you’ve been my constant. You’ve seen my worst moods and still stayed. I admire your strength, your kindness, and your heart. I pray this year brings growth, happiness, success, and the kind of love you truly deserve.
+             No matter what happens in life, I’ll always value what we share 🤍✨</p>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+         </div>
+        </div>
+        
     </div>
+        <br><br>
+
+    
 
     <button onclick="propose()">Click for Surprise 💍</button>
 
@@ -230,7 +370,7 @@ h2{
 
 <script>
 
-const text = "Happy Birthday to my forever Kunju ❤️✨ You’re not just my best friend… you’re my comfort place, my biggest supporter, and the person who understands me without me saying a word. Thank you for standing by me in every mood, every mess, every moment. Life feels lighter with you in it. I pray this year gives you everything your heart secretly wishes for — success, happiness, peace, and love that matches your beautiful soul. No matter where life takes us, remember one thing — I’m always just one call away. Always. 💫 Love you endlessly, bestie 💕 💍🥰";
+const text = "Happy Birthday to my forever KUNJU ❤️✨ You’re not just my best friend… you’re my comfort place, my biggest supporter, and the person who understands me without me saying a word. Thank you for standing by me in every mood, every mess, every moment. Life feels lighter with you in it. I pray this year gives you everything your heart secretly wishes for — success, happiness, peace, and love that matches your beautiful soul. No matter where life takes us, remember one thing — I’m always just one call away. Always. 💫 Love you endlessly, bestie 💕 💍🥰";
 
 let i = 0;
 let typingStarted = false;
@@ -238,6 +378,7 @@ let typingStarted = false;
 const correctPassword="14052004";
 
 /* Unlock */
+
 function unlock(){
     let entered=document.getElementById("password").value;
 
@@ -261,7 +402,7 @@ function typeEffect(){
     if(i < text.length){
         document.getElementById("message").innerHTML += text.charAt(i);
         i++;
-        setTimeout(typeEffect, 40);
+        setTimeout(typeEffect, 20);
     }
 }
 
@@ -336,6 +477,8 @@ function propose(){
 
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 </body>
 </html>
