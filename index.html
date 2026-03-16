@@ -160,8 +160,9 @@ h2{
 }
 
 /* Mobile - 1 per row */
+
 @media(max-width:600px){
-    .gallery,#lockScreen{
+    .gallery{
         grid-template-columns: repeat(1, 1fr);
         width: 368px;
     }
@@ -211,8 +212,8 @@ html{
 
 .card img{
     filter: grayscale(100%);
+    transition: filter .4s ease, transform .4s ease;
 }
-
 .card img:hover{
     filter: grayscale(0%);
 }
@@ -247,8 +248,16 @@ html{
     text-transform: capitalize;
     text-shadow: 1px 1px 1px black;
     font-size: large;
-    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+    background-image: linear-gradient(120deg, #fbea93b7 0%, #f5576c 100%);
 }
+
+
+
+.card-text{
+    animation: fadeUp .8s 1.1s forwards;
+}
+
+@keyframes fadeUp  { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
 
 .card-body{
 
@@ -272,7 +281,7 @@ html{
 
 <div class="main" id="mainContent" style="display:none;">
     <h1>Happy Birthday </h1><br>
-    <h1>SIVARANJINI<span class="rainbow-text">❤️</spans></h1>
+    <h1>SIVARANJINI<span class="rainbow-text">❤️</span></h1>
     <br><br>
     <p>You are my moon in the darkest nights 🌙✨</p>
 
@@ -282,80 +291,80 @@ html{
         <img src="image1.jpg" class="card-img-top" alt="...">
          <div class="card-body" >
         <h5 class="card-title"></h5>
-        <p class="card-text">On your birthday, I pray that God blesses you with good health, peaceful days, endless smiles,
+        <p class="card-text" id="text1">On your birthday, I pray that God blesses you with good health, peaceful days, endless smiles,
              and success in everything you do. May every tear turn into joy and every dream turn into reality. You deserve the best in this world 🌷💫</p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
          </div>
         </div>
         
-         <div class="card" style="width: ;">
+        <div class="card">
         <img src="image6.jpg" class="card-img-top" alt="...">
          <div class="card-body">
         <h5 class="card-title"></h5>
-        <p class="card-text">Happy Birthday <span style="color: rgb(0, 251, 255);">Kunju</span> who means more to me than she knows.
+        <p class="card-text" id="text2">Happy Birthday <span style="color: rgb(0, 251, 255);">Kunju</span> who means more to me than she knows.
         You make ordinary days feel special. I’m grateful for every memory, every laugh, and every moment with you. You’re truly one of a kind 🌸</p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
          </div>
     
         </div>
-        <div class="card" style="width: ;">
+        <div class="card" >
         <img src="image4.jpg" class="card-img-top" alt="...">
          <div class="card-body">
         <h5 class="card-title"></h5>
-        <p class="card-text">Happy Birthday to the one who understands my silence.
+        <p class="card-text" id="text3">Happy Birthday to the one who understands my silence.
         Thank you for being my safe place, my late-night listener, and my constant support. No matter where life takes us,
         I promise I’ll always stand by you. You deserve peace, success, and a love that matches your heart 🤍</p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
          </div>
         
         </div>
-        <div class="card" style="width: ;">
+        <div class="card">
         <img src="image3.jpg" class="card-img-top" alt="...">
          <div class="card-body">
         <h5 class="card-title"></h5>
-        <p class="card-text" >Happy Birthday, my Dear <span style="color: rgb(0, 221, 255);">Kunju</span> ❤️
+        <p class="card-text" id="text4">Happy Birthday, my Dear <span style="color: rgb(0, 221, 255);">Kunju</span> ❤️
             Stay happy, stay blessed, and stay mine forever as my best friend.</p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
          </div>
         </div>
 
-        <div class="card" style="width: ;">
+        <div class="card" >
         <img src="image7.jpg" class="card-img-top" alt="...">
          <div class="card-body">
         <h5 class="card-title"></h5>
-        <p class="card-text">Happy Birthday to the strongest girl I know 💪💖
+        <p class="card-text" id="text5">Happy Birthday to the strongest girl I know 💪💖
         No matter what happens, remember you’re never alone. I’ll always protect you, support you, and remind you how amazing you are. The world is lucky to have you.</p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
          </div>
         </div>
 
-        <div class="card" style="width: ;">
+        <div class="card" >
         <img src="image5.jpg" class="card-img-top" alt="...">
          <div class="card-body">
         <h5 class="card-title"></h5>
-        <p class="card-text">Happy Birthday to my <span style="color: rgb(0, 195, 255);"> Delulu</span> 🎂✨
+        <p class="card-text" id="text6">Happy Birthday to my <span style="color: rgb(0, 195, 255);"> Delulu</span> 🎂✨
         You’re not just my best friend, you’re my daily dose of happiness. Life feels softer, brighter, and safer with you in it. 
         I hope this year gives you everything you secretly pray for. Stay the same beautiful soul you are 💗</p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
          </div>
         </div>
 
-        <div class="card" style="width: ;">
+        <div class="card" >
         <img src="image2.jpg" class="card-img-top" alt="...">
          <div class="card-body">
         <h5 class="card-title"></h5>
-        <p class="card-text">Happy Birthday, Drama Queen 👑🎉
+        <p class="card-text" id="text7">Happy Birthday, Drama Queen 👑🎉
         You’re officially older but still acting like a baby 😌
         Thank you for tolerating me every day — that itself deserves an award! May your year be full of food, fun, and zero stress (and maybe a little less attitude 😂)</p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
          </div>
         </div>
 
-        <div class="card" style="width: ;">
+        <div class="card" >
         <img src="image8.jpg" class="card-img-top" alt="...">
          <div class="card-body">
         <h5 class="card-title"></h5>
-        <p class="card-text" >Happy Birthday to the girl who changed my life in the simplest way. From random talks to serious life discussions, you’ve been my constant. You’ve seen my worst moods and still stayed. I admire your strength, your kindness, and your heart. I pray this year brings growth, happiness, success, and the kind of love you truly deserve.
+        <p class="card-text" id="text8" >Happy Birthday to the girl who changed my life in the simplest way. From random talks to serious life discussions, you’ve been my constant. You’ve seen my worst moods and still stayed. I admire your strength, your kindness, and your heart. I pray this year brings growth, happiness, success, and the kind of love you truly deserve.
              No matter what happens in life, I’ll always value what we share 🤍✨</p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
          </div>
@@ -385,7 +394,7 @@ const text = "Happy Birthday to my forever KUNJU ❤️✨ You’re not just my 
 let i = 0;
 let typingStarted = false;
 
-const correctPassword="14052004";
+const correctPassword="11";
 
 /* Unlock */
 
@@ -446,7 +455,7 @@ createHearts("🎉");
 
 /* Fireworks */
 function createFirework(x,y){
-    for(let i=0;i<80;i++){
+    for(let i=0;i<66;i++){
         const particle=document.createElement("div");
         particle.className="firework";
         particle.style.background=`hsl(${Math.random()*360},100%,60%)`;
@@ -466,8 +475,9 @@ function createFirework(x,y){
     }
 }
 
+
 function launchFireworks(){
-    for(let i=0;i<46;i++){
+    for(let i=0;i<33;i++){
         setTimeout(()=>{
             const x=Math.random()*window.innerWidth;
             const y=Math.random()*window.innerHeight/2;
